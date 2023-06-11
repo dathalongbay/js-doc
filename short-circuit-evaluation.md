@@ -22,3 +22,6 @@ console.log(result3); // true
 var result4 = (false || false || true); 
 console.log(result4); // true
 ```
+Trong ví dụ trên, vì giá trị đầu tiên trong biểu thức true || false || false là đúng (true), JS dừng việc đánh giá và trả về giá trị true mà không cần kiểm tra các toán hạng còn lại.
+
+Short-circuit evaluation rất hữu ích trong việc kiểm tra các giá trị điều kiện hoặc trong việc tránh việc thực hiện các phép tính không cần thiết khi kết quả đã có thể xác định từ các giá trị trước đó.
