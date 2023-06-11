@@ -10,3 +10,15 @@ console.log(result); // false
 var result2 = (true && true && true); 
 console.log(result2); // true
 ```
+Trong ví dụ trên, vì giá trị đầu tiên trong biểu thức false && true && true là sai (false), JS dừng việc đánh giá và trả về giá trị false mà không cần kiểm tra các toán hạng còn lại.
+
+Toán tử "||" trong JS cũng sử dụng kỹ thuật short-circuit evaluation. Nó trả về giá trị đầu tiên trong biểu thức nếu nó là một giá trị đúng (true), ngược lại nó sẽ trả về giá trị cuối cùng trong biểu thức. JS cũng đánh giá từ trái sang phải và dừng việc đánh giá nếu một giá trị đúng được tìm thấy.
+
+Ví dụ:
+```js
+var result3 = (true || false || false); 
+console.log(result3); // true
+
+var result4 = (false || false || true); 
+console.log(result4); // true
+```
