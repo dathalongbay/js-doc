@@ -14,3 +14,13 @@ Object.assign(target, ...sources)
 2. Mỗi thuộc tính trong các đối tượng nguồn được sao chép vào đối tượng đích nếu nó chưa tồn tại trong đối tượng đích hoặc được ghi đè nếu đã tồn tại.
 3. Phương thức Object.assign() chỉ sao chép các thuộc tính trực tiếp (own properties) của đối tượng nguồn, không sao chép các thuộc tính từ prototype chain.
 4. Sau khi sao chép hoàn tất, phương thức trả về đối tượng đích đã được cập nhật.
+ 
+Dưới đây là một ví dụ minh họa:
+```js
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+const result = Object.assign(target, source);
+
+console.log(result); // Output: { a: 1, b: 4, c: 5 }
+```
