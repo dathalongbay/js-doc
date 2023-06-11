@@ -17,3 +17,18 @@ console.log(multiArray[1][2]); // Output: 6
 multiArray[0][1] = 9;
 console.log(multiArray[0][1]); // Output: 9
 ```
+Trong ví dụ trên, multiArray là một mảng đa chiều có 2 hàng và 3 cột.   
+Bạn có thể truy cập vào các phần tử bằng cách sử dụng cú pháp array[row][column].  
+Ví dụ multiArray[0][0] trả về phần tử đầu tiên của mảng đa chiều là 1.  
+
+Bạn có thể tạo mảng đa chiều với nhiều chiều hơn bằng cách lồng thêm các mảng trong mảng. Ví dụ:
+```js
+let multiArray = [
+  [[1, 2], [3, 4]],
+  [[5, 6], [7, 8]]
+];
+
+console.log(multiArray[0][1][0]); // Output: 3
+```
+Trên đây là cách sử dụng mảng đa chiều trong JavaScript.   
+Bạn có thể tạo và làm việc với mảng đa chiều có số chiều tùy ý bằng cách lồng nhau các mảng như ví dụ bên trên.
