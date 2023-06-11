@@ -13,3 +13,4 @@ Các giá trị "falsy" trong JavaScript là những giá trị mà JavaScript c
 - NaN: NaN là một giá trị đặc biệt thể hiện Not-a-Number. NaN được coi là "falsy".
 - Giá trị null: null là giá trị đặc biệt không có giá trị hoặc tham chiếu đến đối tượng. Null được coi là "falsy".
 - Giá trị undefined: undefined là một giá trị đặc biệt khi một biến không được gán giá trị. Undefined được coi là "falsy".
+Khi sử dụng các giá trị "truthsy" hoặc "falsy" trong các điều kiện, JavaScript sẽ tự động chuyển đổi chúng thành giá trị boolean tương ứng (true hoặc false) để thực hiện các phép so sánh hoặc điều kiện.
