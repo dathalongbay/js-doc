@@ -24,3 +24,4 @@ const result = Object.assign(target, source);
 
 console.log(result); // Output: { a: 1, b: 4, c: 5 }
 ```
+Trong ví dụ trên, thuộc tính b trong đối tượng target đã bị ghi đè bởi giá trị từ đối tượng source, và thuộc tính c được sao chép từ đối tượng source vào target. Kết quả cuối cùng là đối tượng target đã được cập nhật và được trả về bởi Object.assign().
