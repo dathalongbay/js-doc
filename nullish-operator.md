@@ -16,3 +16,6 @@ console.log(baz); // Output: 'some value'
 const qux = false ?? true;
 console.log(qux); // Output: false
 ```
+Trong ví dụ trên, giá trị của biến foo được gán là 'default value' vì giá trị ban đầu của foo là null. Biến bar giữ giá trị 0 vì 0 không được coi là nullish. Biến baz chứa 'some value' vì giá trị ban đầu của baz là undefined. Cuối cùng, biến qux giữ giá trị false vì false không được xem là nullish.
+
+Nullish operator là một cách tiện lợi để kiểm tra giá trị null hoặc undefined trong JavaScript và xử lý các giá trị mặc định.
