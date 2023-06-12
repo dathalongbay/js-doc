@@ -51,6 +51,19 @@ export default App;
 ```
 
 3. Props (Thuộc tính): Props là một cách để truyền dữ liệu từ một thành phần cha đến một thành phần con trong React. Props là chỉ đọc và không thể thay đổi giá trị của chúng.
+```js
+import React from 'react';
+
+const Button = (props) => {
+  return (
+    <button onClick={props.onClick}>
+      {props.label}
+    </button>
+  );
+}
+
+export default Button;
+```
 
 4. State (Trạng thái): State là một đối tượng trong React để lưu trữ và quản lý trạng thái của một thành phần. Khi state thay đổi, React sẽ tự động cập nhật lại giao diện người dùng.
 
