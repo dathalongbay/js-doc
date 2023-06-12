@@ -39,6 +39,7 @@ npx create-react-app my-app
 ```
 Điều này chỉ xảy ra khi bạn chưa cài `create-react-app` . Từ lần sau bạn có thể tạo ứng dụng luôn mà không phải cài lại .
 
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/33e4f490-7c39-4f03-9dcb-16d436e5fc29)
 
 
 
