@@ -1,4 +1,4 @@
-![image](https://github.com/dathalongbay/js-doc/assets/6966136/d9e71267-1eb6-4cb4-a3f8-dc0b341fc53a)
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/2bc8169e-217d-4586-a814-a83ea577744a)
 
 ReactJS (hay còn gọi là React) là một thư viện JavaScript mã nguồn mở được sử dụng để xây dựng giao diện người dùng (UI) cho các ứng dụng web. Nó được phát triển bởi Facebook và được sử dụng rộng rãi trong việc phát triển ứng dụng web đơn trang (Single Page Applications) và các ứng dụng di động.
 
