@@ -5,3 +5,7 @@ https://nodejs.org/en
 Cài đặt xong nodejs :  
 Hãy gõ lệnh `node -v` để kiểm tra phiên bản nodejs đang chạy  
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/84890c9a-bc89-42e5-a2aa-960d476bb1a6)
+
+Kiểm tra phiên bản npm bằng lệnh `npm -v`   
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/96316f75-db36-41b0-8821-9bcc54178f3b)
+
