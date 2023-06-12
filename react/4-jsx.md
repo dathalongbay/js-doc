@@ -80,5 +80,10 @@ const App = () => {
 
 export default App;
 ```
+CẢNH BÁO:
+
+Vì JSX gần với JavaScript hơn là so với HTML, React DOM sử dụng chuẩn quy tắc đặt tên camelCase cho thuộc tính thay vì dùng tên thuộc tính gốc của HTML.
+
+Ví dụ, class trở thành className trong JSX, và tabindex trở thành tabIndex.
 
 
