@@ -16,3 +16,21 @@ const App = () => {
 
 export default App;
 ```
+## Sử dụng biểu thức JavaScript trong JSX:
+```js
+import React from 'react';
+
+const App = () => {
+  const name = 'John Doe';
+  const age = 25;
+
+  return (
+    <div>
+      <h1>Hello, {name}!</h1>
+      <p>You are {age} years old.</p>
+    </div>
+  );
+}
+
+export default App;
+```
