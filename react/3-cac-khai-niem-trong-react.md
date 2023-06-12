@@ -121,6 +121,7 @@ const Timer = () => {
 export default Timer;
 ```
 7. Virtual DOM (DOM ảo): Virtual DOM là một bản sao của DOM thực tế trong trình duyệt. React sử dụng Virtual DOM để cải thiện hiệu suất bằng cách cập nhật chỉ các phần tử thực sự thay đổi thay vì cập nhật toàn bộ DOM.
+
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/1d0d441d-76a3-4e20-b175-5fd504439fa7)
 
 Đây chỉ là một số khái niệm cơ bản trong React. Có rất nhiều khái niệm và khái niệm nâng cao khác trong React mà bạn có thể khám phá thêm khi làm việc với nó.
