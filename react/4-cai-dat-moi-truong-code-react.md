@@ -19,4 +19,15 @@ npm cũng cho phép bạn quản lý các phụ thuộc (dependencies) của ứ
 Bên cạnh việc quản lý gói phần mềm, npm còn cung cấp các công cụ khác như xây dựng (build), kiểm tra (test) và triển khai (deploy) ứng dụng. Nó cung cấp một hệ sinh thái phong phú của các lệnh và tài liệu để hỗ trợ việc phát triển ứng dụng Node.js một cách hiệu quả.
 
 Tóm lại, npm là một công cụ quản lý gói phần mềm cho Node.js, cho phép bạn tìm kiếm, cài đặt và quản lý các thư viện và module JavaScript, cùng với các tính năng khác như quản lý phụ thuộc và công cụ phát triển ứng dụng.
+### Bước 4 : bắt đầu với https://create-react-app.dev/
+Truy cập vào trang web : https://create-react-app.dev/ đây là tool sẽ giúp chúng ta bắt đầu với react js
+### Bước 5 : tạo ứng dụng đầu tiên 
+Mở terminal trên máy và gõ lệnh 
+```
+npx create-react-app my-app
+```
+trong đó `my-app` là tên ứng dụng react và cũng là tên folder chứa ứng dụng react được tạo ra  
+bạn có thể đổi `my-app` thành tên ứng dụng khác mà bạn mong muốn ví dụ như : code-app,demo-app ...
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/d7fac62c-6c50-4ca9-ad28-03c6c8815cfd)
+
 
