@@ -1,7 +1,9 @@
 # Các khái niệm cơ bản trong react
 React là một thư viện JavaScript phổ biến được sử dụng để xây dựng giao diện người dùng (UI) tương tác trong các ứng dụng web. Dưới đây là một số khái niệm cơ bản trong React:
 
-1. Components (Các thành phần): React được xây dựng dựa trên khái niệm components. Components là các phần tử độc lập và có thể tái sử dụng trong ứng dụng React. Có hai loại component chính là functional components và class components.
+1. Components (Các thành phần): React được xây dựng dựa trên khái niệm components. Components là các phần tử độc lập và có thể tái sử dụng trong ứng dụng React. Có hai loại component chính là functional components và class components.   
+ ![image](https://github.com/dathalongbay/js-doc/assets/6966136/445c8d75-6b0c-4e74-bdbb-12985b65e1ff)
+
 
 2. JSX (JavaScript XML): JSX là một phần cú pháp của React cho phép bạn viết các đoạn mã JavaScript trong HTML. JSX giúp tạo ra các thành phần UI trong React một cách rõ ràng và dễ đọc hơn.
 
