@@ -66,7 +66,31 @@ export default Button;
 ```
 
 4. State (Trạng thái): State là một đối tượng trong React để lưu trữ và quản lý trạng thái của một thành phần. Khi state thay đổi, React sẽ tự động cập nhật lại giao diện người dùng.
+```js
+import React, { useState } from 'react';
 
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
 5. Lifecycle methods (Các phương thức vòng đời): React cung cấp một số phương thức vòng đời cho các thành phần để thực hiện các hành động trong quá trình chúng được tạo ra, cập nhật hoặc bị hủy bỏ. Các phương thức như componentDidMount, componentDidUpdate, và componentWillUnmount là các ví dụ về các phương thức vòng đời trong React.
 
 6. Hooks: Hooks là một tính năng mới trong React từ phiên bản 16.8. Hooks cho phép bạn sử dụng trạng thái và các tính năng của React trong các hàm không phải là thành phần lớp. Các hooks như useState và useEffect giúp quản lý trạng thái và thực hiện các tác vụ phụ trong hàm.
