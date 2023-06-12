@@ -55,6 +55,9 @@ npm start
 ```
 để chạy ứng dụng . mặc định ứng dụng sẽ chạy trên port 3000 
 
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/46d63383-a630-488c-94a6-e915cbf4fad8)
+
+
 
 
 
