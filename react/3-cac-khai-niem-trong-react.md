@@ -5,7 +5,35 @@ React là một thư viện JavaScript phổ biến được sử dụng để x
 
  ![image](https://github.com/dathalongbay/js-doc/assets/6966136/445c8d75-6b0c-4e74-bdbb-12985b65e1ff)
 
+```js
+// Header.js
+const Header = () => {
+  return (
+    <header>
+      <h1>Ứng dụng React</h1>
+    </header>
+  );
+};
 
+// MainContent.js
+const MainContent = () => {
+  return (
+    <main>
+      <p>Đây là nội dung chính của ứng dụng.</p>
+    </main>
+  );
+};
+
+// App.js
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <MainContent />
+    </div>
+  );
+};
+```
 2. JSX (JavaScript XML): JSX là một phần cú pháp của React cho phép bạn viết các đoạn mã JavaScript trong HTML. JSX giúp tạo ra các thành phần UI trong React một cách rõ ràng và dễ đọc hơn.
 
 3. Props (Thuộc tính): Props là một cách để truyền dữ liệu từ một thành phần cha đến một thành phần con trong React. Props là chỉ đọc và không thể thay đổi giá trị của chúng.
