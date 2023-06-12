@@ -1,3 +1,4 @@
+# HTML DOM là gì ?
 `HTML DOM (Document Object Model)` là một giao diện lập trình ứng dụng (API) cho HTML, XML và XHTML. Nó đại diện cho cấu trúc của một tài liệu web và cho phép các ngôn ngữ lập trình như JavaScript tương tác với và thay đổi cấu trúc, nội dung và kiểu dáng của trang web.    
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/b70906fe-6654-4f9c-a8af-fdef49acaf3d)
 
