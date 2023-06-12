@@ -95,7 +95,32 @@ export default Counter;
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/77935571-739c-4451-be9d-dce8d1efcc0b)
 
 6. Hooks: Hooks là một tính năng mới trong React từ phiên bản 16.8. Hooks cho phép bạn sử dụng trạng thái và các tính năng của React trong các hàm không phải là thành phần lớp. Các hooks như useState và useEffect giúp quản lý trạng thái và thực hiện các tác vụ phụ trong hàm.
+```js
+import React, { useState, useEffect } from 'react';
 
+const Timer = () => {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(prevSeconds => prevSeconds + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <div>
+      <h1>Timer: {seconds} seconds</h1>
+    </div>
+  );
+}
+
+export default Timer;
+```
 7. Virtual DOM (DOM ảo): Virtual DOM là một bản sao của DOM thực tế trong trình duyệt. React sử dụng Virtual DOM để cải thiện hiệu suất bằng cách cập nhật chỉ các phần tử thực sự thay đổi thay vì cập nhật toàn bộ DOM.
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/1d0d441d-76a3-4e20-b175-5fd504439fa7)
 
 Đây chỉ là một số khái niệm cơ bản trong React. Có rất nhiều khái niệm và khái niệm nâng cao khác trong React mà bạn có thể khám phá thêm khi làm việc với nó.
