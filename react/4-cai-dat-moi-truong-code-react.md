@@ -29,7 +29,7 @@ npx create-react-app my-app
 trong đó `my-app` là tên ứng dụng react và cũng là tên folder chứa ứng dụng react được tạo ra  
 bạn có thể đổi `my-app` thành tên ứng dụng khác mà bạn mong muốn ví dụ như : code-app,demo-app ...   
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/d7fac62c-6c50-4ca9-ad28-03c6c8815cfd)
-Lần đầu tiên bạn sẽ phải cài đặt npx bạn gõ y để xác nhận cài đặt npx   
+Lần đầu tiên bạn sẽ phải cài đặt create-react-app bạn gõ y để xác nhận cài đặt tool này   
 
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/cd08dbde-0c48-4a93-8bac-27a47cb7527b)
 
