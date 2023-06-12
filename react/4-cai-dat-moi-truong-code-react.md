@@ -43,6 +43,18 @@ npx create-react-app my-app
 
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/33e4f490-7c39-4f03-9dcb-16d436e5fc29)
 
+### Tiếp theo hãy gõ lệnh
+```js 
+cd my-app
+```
+vì my-app là tên ứng dụng react chúng ta đã tạo ra ban đầu . nếu bạn dùng tên khác thì hay cd <tên ứng dụng>   
+cd là lệnh di chuyển vào 1 đường dẫn nào đó trên hệ điều hành   
+tiếp nữa gõ lệnh 
+```
+npm start
+```
+để chạy ứng dụng . mặc định ứng dụng sẽ chạy trên port 3000 
+
 
 
 
