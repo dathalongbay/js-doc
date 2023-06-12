@@ -33,6 +33,14 @@ Lần đầu tiên bạn sẽ phải cài đặt create-react-app bạn gõ y đ
 
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/cd08dbde-0c48-4a93-8bac-27a47cb7527b)
 
+Sau khi cài đặt `create-react-app` thành công bạn tiếp tục chạy lại lệnh để tạo ứng dụng `my-app` của bạn
+```
+npx create-react-app my-app
+```
+Điều này chỉ xảy ra khi bạn chưa cài `create-react-app` . Từ lần sau bạn có thể tạo ứng dụng luôn mà không phải cài lại .
+
+
+
 
 
 
