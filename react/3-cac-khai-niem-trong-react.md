@@ -92,6 +92,7 @@ const Counter = () => {
 export default Counter;
 ```
 5. Lifecycle methods (Các phương thức vòng đời): React cung cấp một số phương thức vòng đời cho các thành phần để thực hiện các hành động trong quá trình chúng được tạo ra, cập nhật hoặc bị hủy bỏ. Các phương thức như componentDidMount, componentDidUpdate, và componentWillUnmount là các ví dụ về các phương thức vòng đời trong React.
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/77935571-739c-4451-be9d-dce8d1efcc0b)
 
 6. Hooks: Hooks là một tính năng mới trong React từ phiên bản 16.8. Hooks cho phép bạn sử dụng trạng thái và các tính năng của React trong các hàm không phải là thành phần lớp. Các hooks như useState và useEffect giúp quản lý trạng thái và thực hiện các tác vụ phụ trong hàm.
 
