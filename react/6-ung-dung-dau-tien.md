@@ -1,5 +1,5 @@
 # Ứng dụng đầu tiên
-Mở fole src/index.js để xem nội dung : 
+Mở file src/index.js để xem nội dung : 
 
 ```js
 import React from 'react';
