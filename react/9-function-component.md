@@ -727,7 +727,7 @@ export default App;
 ```
 Bây giờ, thành phần Count không còn được cập nhật khi người dùng gõ vào trường nhập liệu. Chỉ có thành phần App được rerender. Tuy nhiên, tối ưu hóa hiệu suất này không nên được sử dụng mặc định. Tôi khuyến nghị kiểm tra nó khi bạn gặp vấn đề về việc rerender các thành phần mất quá nhiều thời gian (ví dụ: render và cập nhật một danh sách lớn các mục trong một component Bảng).
 ### REACT FUNCTION COMPONENT: EXPORT AND IMPORT
-Eventually you will separate components into their own files. Since React Components are functions (or classes), you can use the standard import and export statements provided by JavaScript. For instance, you can define and export a component in one file:
+Cuối cùng, bạn sẽ phân chia các thành phần vào các tệp riêng của chúng. Vì các thành phần React là các hàm (hoặc lớp), bạn có thể sử dụng các câu lệnh import và export tiêu chuẩn được cung cấp bởi JavaScript. Ví dụ, bạn có thể định nghĩa và xuất khẩu một thành phần trong một tệp:
 
 ```js
 // src/components/Headline.js
@@ -758,9 +758,9 @@ const App = () => {
 export default App;
 ```
 
-Note: If a Function Component is not defined, console log your exports and imports to get a better understanding of where you made a mistake. Maybe you used a named export and expected it to be a default export.
+Ghi chú: Nếu một Function Component không được định nghĩa, hãy console log các exports và imports của bạn để hiểu rõ hơn về nơi bạn đã mắc lỗi. Có thể bạn đã sử dụng một named export và mong đợi nó là một default export.
 
-If you don't care about the component name by defining the variable, you can keep it as Anonymous Function Component when using a default export on the Function Component:
+Nếu bạn không quan tâm đến tên của thành phần bằng cách xác định biến, bạn có thể giữ nó là Anonymous Function Component khi sử dụng default export trên Function Component:
 ```js
 import React from 'react';
 
@@ -773,11 +773,11 @@ export default () => {
 };
 ```
 
-However, when doing it this way, React Dev Tools cannot identify the component because it has no display name. You may see an Unknown Component in your browser's developer tools.
+Tuy nhiên, khi làm như vậy, React Dev Tools không thể nhận dạng được thành phần vì nó không có tên hiển thị. Bạn có thể thấy một Unknown Component trong các công cụ phát triển của trình duyệt.
 
 ### REACT FUNCTION COMPONENT: REF
 
-A React Ref should only be used in rare cases such as accessing/manipulating the DOM manually (e.g. focus element), animations, and integrating third-party DOM libraries (e.g. D3). If you have to use a Ref in a Function Component, you can define it within the component. In the following case, the input field will get focused after the component did mount:
+Một React Ref chỉ nên được sử dụng trong những trường hợp hiếm như truy cập/điều chỉnh DOM thủ công (ví dụ: tập trung vào phần tử), hoạt ảnh và tích hợp thư viện DOM bên thứ ba (ví dụ: D3). Nếu bạn phải sử dụng một Ref trong một React Function Component, bạn có thể định nghĩa nó bên trong thành phần. Trong trường hợp sau, trường nhập sẽ được tập trung sau khi thành phần đã được mount:
 
 ```js
 import React, { useState, useEffect, useRef } from 'react';
@@ -814,7 +814,7 @@ const Input = ({ value, handleChange }) => {
 export default App;
 ```
 
-However, React Function Components cannot be given refs! If you try the following, the ref will be assigned to the component instance but not to the actual DOM node.
+Tuy nhiên, React Function Components không thể nhận các tham chiếu (refs)! Nếu bạn thử điều sau đây, tham chiếu sẽ được gán cho phiên bản của thành phần nhưng không phải cho nút DOM thực tế.
 
 ```js
 // Doesn't work!
@@ -850,7 +850,7 @@ const Input = ({ value, handleChange, ref }) => (
 
 export default App;
 ```
-It's not recommended to pass a ref from a Parent Component to a Child Component and that's why the assumption has always been: React Function Components cannot have refs. However, if you need to pass a ref to a Function Component -- because you have to measure the size of a function component's DOM node, for example, or like in this case to focus an input field from the outside -- you can forward the ref:
+Không khuyến nghị chuyển tham chiếu từ Thành phần Cha đến Thành phần Con và đó là lý do tại sao giả định luôn luôn là: React Function Components không thể có tham chiếu. Tuy nhiên, nếu bạn cần chuyển tham chiếu cho một React Function Component - ví dụ như bạn cần đo kích thước của nút DOM của một thành phần chức năng, hoặc giống như trong trường hợp này là để tập trung vào một trường nhập từ bên ngoài - bạn có thể chuyển tiếp tham chiếu đó:
 ```js
 // Does work!
 
@@ -891,10 +891,10 @@ const Input = forwardRef(({ value, handleChange }, ref) => (
 export default App;
 ```
 
-There are a few other things you may want to know about React Refs, so check out this article: How to use Ref in React or the official React documentation.
+Dưới đây là một số thông tin khác về React Refs mà bạn có thể muốn biết, vì vậy hãy xem bài viết này: "How to use Ref in React" hoặc tài liệu chính thức của React.
 
 ### REACT FUNCTION COMPONENT: PROPTYPES
-PropTypes can be used for React Class Components and Function Components the same way. Once you have defined your component, you can assign it PropTypes to validate the incoming props of a component:
+PropTypes có thể được sử dụng cho cả React Class Components và React Function Components theo cách tương tự. Sau khi bạn đã định nghĩa component, bạn có thể gán PropTypes để kiểm tra tính hợp lệ của các props được truyền vào cho component:
 
 ```js
 import React from 'react';
@@ -916,9 +916,9 @@ Headline.propTypes = {
 
 export default App;
 ```
-Note that you have to install the standalone React prop-types, because it has been removed from the React core library a while ago. If you want to learn more about PropTypes in React, check out the official documentation.
+Lưu ý rằng bạn phải cài đặt gói phụ thuộc prop-types độc lập, vì nó đã được loại bỏ khỏi thư viện React core một thời gian trước. Nếu bạn muốn tìm hiểu thêm về PropTypes trong React, hãy xem tài liệu chính thức.
 
-In addition, previously you have seen the usage of default props for a Function Component. For the sake of completeness, this is another one:
+Ngoài ra, trước đây bạn đã thấy cách sử dụng default props cho một React Function Component. Vì sự hoàn thiện, đây là một ví dụ khác:
 ```js
 import React from 'react';
 
@@ -938,16 +938,16 @@ Headline.defaultProps = {
 
 export default App;
 ```
-Note that you can also use the default assignment when destructuring the value from the props in the function signature (e.g. const Headline = ({ headline = 'Hello Component' }) =>) or the || operator within the Function Component's body (e.g. return <h1>{headline || 'Hello Component'}</h1>;).
+Lưu ý rằng bạn cũng có thể sử dụng gán mặc định khi giải tách giá trị từ props trong chữ ký hàm (`ví dụ: const Headline = ({ headline = 'Hello Component' }) =>`) hoặc toán tử || trong phần thân của Function Component (`ví dụ: return <h1>{headline || 'Hello Component'}</h1>;`).
 
-However, if you really want to go all-in with strongly typed components in React, you have to check out TypeScript which is briefly shown in the next section.
+Tuy nhiên, nếu bạn thực sự muốn sử dụng các thành phần kiểu mạnh trong React, bạn nên tìm hiểu TypeScript, một phần được đề cập ngắn gọn trong phần tiếp theo.
 
 ### REACT FUNCTION COMPONENT VS CLASS COMPONENT
-This section will not present you any performance benchmark for Class Components vs Functional Components, but a few words from my side about where React may go in the future.
+Phần này sẽ không trình bày cho bạn bất kỳ tiêu chuẩn hiệu suất nào cho Class Component so với Functional Component, mà chỉ là một vài lời từ phía tôi về tương lai của React.
 
-Since React Hooks have been introduced in React, Function Components are not anymore behind Class Components feature-wise. You can have state, side-effects and lifecycle methods in React Function Components now. That's why I strongly believe React will move more towards Functional Components, because they are more lightweight than Class Components and offer a sophisticated API for reusable yet encapsulated logic with React Hooks.
+Kể từ khi React Hooks được giới thiệu vào React, các Function Component không còn kém tính năng so với Class Component. Bây giờ bạn có thể sử dụng state, side-effect và lifecycle methods trong React Function Component. Đó là lý do tại sao tôi mạnh mẽ tin rằng React sẽ di chuyển hướng nhiều hơn đến Functional Component, vì chúng nhẹ hơn so với Class Component và cung cấp một API tinh vi cho logic tái sử dụng và bao đóng với React Hooks.
 
-For the sake of comparison, check out the implementation of the following Class Component vs Functional Component:
+Vì mục đích so sánh, hãy xem xét cài đặt của Class Component và Functional Component sau đây:
 
 ```js
 // Class Component
@@ -1010,9 +1010,18 @@ const App = () => {
   );
 };
 ```
-If you are interested in moving from Class Components to Function Components, check out this guide: A migration path from React Class Components to Function Components with React Hooks. However, there is no need to panic because you don't have to migrate all your React components now. Maybe it's a better idea to start implementing your future components as Function Components instead.
+Nếu bạn quan tâm đến việc chuyển từ Class Component sang Function Component, hãy xem hướng dẫn sau: Hướng dẫn chuyển từ React Class Component sang Function Component với React Hooks. Tuy nhiên, không cần lo lắng vì bạn không cần phải chuyển đổi tất cả các thành phần React của mình ngay bây giờ. Có thể ý tưởng tốt hơn là bắt đầu triển khai các thành phần tương lai của bạn dưới dạng Function Component thay vì Class Component.
 
-The article has shown you almost everything you need to know to get started with React Function Components. If you want to dig deeper into testing React Components for instance, check out this in-depth guide: Testing React Components. Anyway, I hope there have been a couple of best practices for using Functional Components in React as well. Let me know if anything is missing!
+Bài viết đã giới thiệu cho bạn gần như tất cả những gì bạn cần biết để bắt đầu sử dụng React Function Component. Nếu bạn muốn tìm hiểu sâu hơn về việc kiểm thử các React Component chẳng hạn, hãy xem hướng dẫn chi tiết này: Kiểm thử React Components. Dù sao, hy vọng rằng đã có một số quy tắc tốt cho việc sử dụng Functional Component trong React. Hãy cho tôi biết nếu còn thiếu điều gì!
+
+Tác giả : https://www.robinwieruch.de/react-function-component/
+
+
+
+
+
+
+Regenerate response
 
 
 
