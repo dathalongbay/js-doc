@@ -313,6 +313,287 @@ Tôi nghĩ đây là một ví dụ hoàn hảo nhưng tối giản để minh h
 
 ### Override Component Function with React
 
+Không nên xảy ra thường xuyên, nhưng tôi đã nghe người ta hỏi câu hỏi này. Làm thế nào để ghi đè một hàm của một component? Bạn cần tiếp cận theo cùng một phương pháp như khi ghi đè bất kỳ prop nào khác được truyền vào một component bằng cách đặt giá trị mặc định cho nó:
+
+```js
+import React from 'react';
+
+const App = () => {
+  const sayHello = () => console.log('Hello');
+
+  return <Button handleClick={sayHello} />;
+};
+
+const Button = ({ handleClick }) => {
+  const sayDefault = () => console.log('Default');
+
+  const onClick = handleClick || sayDefault;
+
+  return (
+    <button type="button" onClick={onClick}>
+      Button
+    </button>
+  );
+};
+
+export default App;
+```
+You can assign the default value in the function signature for the destructuring as well:
+```js
+import React from 'react';
+
+const App = () => {
+  const sayHello = () => console.log('Hello');
+
+  return <Button handleClick={sayHello} />;
+};
+
+const Button = ({ handleClick = () => console.log('Default') }) => (
+  <button type="button" onClick={handleClick}>
+    Button
+  </button>
+);
+
+export default App;
+```
+
+Bạn cũng có thể đặt giá trị mặc định cho props của một React Function Component - đây là một lựa chọn khác:
+
+```js
+import React from 'react';
+
+const App = () => {
+  const sayHello = () => console.log('Hello');
+
+  return <Button handleClick={sayHello} />;
+};
+
+const Button = ({ handleClick }) => (
+  <button type="button" onClick={handleClick}>
+    Button
+  </button>
+);
+
+Button.defaultProps = {
+  handleClick: () => console.log('Default'),
+};
+
+export default App;
+```
+Tất cả các phương pháp này có thể được sử dụng để định nghĩa default props (trong trường hợp này là một hàm mặc định), để sau đó có thể ghi đè nó từ bên ngoài bằng cách truyền một prop rõ ràng (ví dụ: một hàm) cho component.
+
+### Async Function in Component with React
+
+Trường hợp đặc biệt khác có thể là một hàm bất đồng bộ (async function) trong một component React. Nhưng không có gì đặc biệt về điều đó, vì không quan trọng hàm được thực thi bất đồng bộ hay không:
+
+```js
+import React from 'react';
+
+const App = () => {
+  const sayHello = () =>
+    setTimeout(() => console.log('Hello'), 1000);
+
+  return <Button handleClick={sayHello} />;
+};
+
+const Button = ({ handleClick }) => (
+  <button type="button" onClick={handleClick}>
+    Button
+  </button>
+);
+
+export default App;
+```
+
+Hàm sẽ được thực thi với độ trễ mà không cần bất kỳ chỉ thị nào khác từ phía bạn bên trong component. Component cũng sẽ được kích hoạt để render lại bất đồng bộ trong trường hợp props hoặc state đã thay đổi. Hãy xem mã sau đây để thấy cách chúng ta thiết lập state với độ trễ nhân tạo bằng cách sử dụng setTimeout:
+
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () =>
+    setTimeout(
+      () => setCount(currentCount => currentCount + 1),
+      1000
+    );
+
+  const handleDecrement = () =>
+    setTimeout(
+      () => setCount(currentCount => currentCount - 1),
+      1000
+    );
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <Button handleClick={handleIncrement}>Increment</Button>
+      <Button handleClick={handleDecrement}>Decrement</Button>
+    </div>
+  );
+};
+
+const Button = ({ handleClick, children }) => (
+  <button type="button" onClick={handleClick}>
+    {children}
+  </button>
+);
+
+export default App;
+```
+
+Lưu ý rằng chúng ta sử dụng một hàm callback bên trong hàm setCount để truy cập vào state hiện tại. Vì các hàm setter từ useState được thực thi bất đồng bộ theo bản chất, bạn muốn đảm bảo thực hiện thay đổi state trên state hiện tại và không phải trên bất kỳ state cũ nào.
+
+Thí nghiệm: Nếu bạn không sử dụng hàm callback bên trong State Hook, mà thay vào đó thực hiện trên biến count trực tiếp (ví dụ: setCount(count + 1)), bạn sẽ không thể tăng giá trị từ 0 lên 2 với một lần nhấp đúp nhanh, vì cả hai lần hàm sẽ được thực thi trên một count state là 0.
+
+### REACT FUNCTION COMPONENT: LIFECYCLE
+
+Nếu bạn đã sử dụng React Class Components trước đây, có thể bạn đã quen với các phương thức lifecycle như componentDidMount, componentWillUnmount và shouldComponentUpdate. Bạn không có những phương thức này trong Function Components, vì vậy hãy xem cách bạn có thể thay thế chúng.
+
+Trước hết, bạn không có constructor trong một Function Component. Thông thường, constructor được sử dụng trong một React Class Component để cấp phát state ban đầu. Như bạn đã thấy, bạn không cần nó trong một Function Component, vì bạn cấp phát state ban đầu bằng cách sử dụng useState hook và thiết lập các hàm bên trong Function Component cho logic kinh doanh tiếp theo:
+
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () =>
+    setCount(currentCount => currentCount + 1);
+
+  const handleDecrement = () =>
+    setCount(currentCount => currentCount - 1);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button type="button" onClick={handleIncrement}>
+        Increment
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+
+### React Functional Component: Mount
+
+Thứ hai, có một vòng đời lắp đặt cho các thành phần React khi chúng được hiển thị lần đầu. Nếu bạn muốn thực hiện một công việc nào đó khi một React Function Component đã được lắp đặt, bạn có thể sử dụng hook useEffect:
+
+```js 
+import React, { useState, useEffect } from 'react';
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () =>
+    setCount(currentCount => currentCount + 1);
+
+  const handleDecrement = () =>
+    setCount(currentCount => currentCount - 1);
+
+  useEffect(() => setCount(currentCount => currentCount + 1), []);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button type="button" onClick={handleIncrement}>
+        Increment
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+Nếu bạn thử ví dụ này, bạn sẽ thấy số đếm 0 và 1 hiển thị ngắn gọn sau nhau. Việc hiển thị đầu tiên của thành phần hiển thị số đếm 0 từ trạng thái ban đầu - sau khi thành phần đã được lắp đặt, hook useEffect sẽ chạy để đặt trạng thái số đếm mới là 1.
+
+Quan trọng lưu ý về mảng rỗng là đối số thứ hai của hook useEffect, nó đảm bảo kích hoạt hiệu ứng chỉ khi thành phần được tải (mount) và giải tải (unmount).
+
+Thử nghiệm: Nếu bạn để đối số thứ hai của hook useEffect trống, bạn sẽ gặp vòng lặp vô tận của việc tăng số đếm lên 1, vì hook useEffect luôn chạy sau khi trạng thái đã thay đổi. Vì hook useEffect kích hoạt một trạng thái thay đổi khác, nó sẽ chạy đi chạy lại để tăng số đếm.
+
+### React Functional Component: Update
+
+Mỗi khi props hoặc state của thành phần thay đổi, thành phần kích hoạt một lần render lại để hiển thị trạng thái mới nhất, thường được xuất phát từ props và state. Một lần render thực thi tất cả những gì trong thân của Function Component.
+
+Lưu ý: Trong trường hợp một Function Component không cập nhật đúng trong ứng dụng của bạn, việc sử dụng console log cho state và props của thành phần là một cách gỡ lỗi đầu tiên hiệu quả. Nếu cả hai không thay đổi, không có lần render mới được thực thi và do đó bạn sẽ không thấy console log đầu ra trong trường hợp đó.
+
+```js
+import React, { useState, useEffect } from 'react';
+
+const App = () => {
+  console.log('Does it render?');
+
+  const [count, setCount] = useState(0);
+
+  console.log(`My count is ${count}!`);
+
+  const handleIncrement = () =>
+    setCount(currentCount => currentCount + 1);
+
+  const handleDecrement = () =>
+    setCount(currentCount => currentCount - 1);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button type="button" onClick={handleIncrement}>
+        Increment
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+Nếu bạn muốn thực hiện một hành động sau khi một lần render lại, bạn có thể sử dụng Effect Hook một lần nữa để làm điều đó sau khi thành phần đã cập nhật:
+
+```js
+import React, { useState, useEffect } from 'react';
+
+const App = () => {
+  const initialCount = +localStorage.getItem('storageCount') || 0;
+  const [count, setCount] = useState(initialCount);
+
+  const handleIncrement = () =>
+    setCount(currentCount => currentCount + 1);
+
+  const handleDecrement = () =>
+    setCount(currentCount => currentCount - 1);
+
+  useEffect(() => localStorage.setItem('storageCount', count));
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button type="button" onClick={handleIncrement}>
+        Increment
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
 
 
 
