@@ -741,6 +741,278 @@ const Headline = (props) => {
 export default Headline;
 ```
 
+And import it in another file:
+```js
+// src/components/App.js
+
+import React from 'react';
+
+import Headline from './Headline.js';
+
+const App = () => {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline value={greeting} />;
+};
+
+export default App;
+```
+
+Note: If a Function Component is not defined, console log your exports and imports to get a better understanding of where you made a mistake. Maybe you used a named export and expected it to be a default export.
+
+If you don't care about the component name by defining the variable, you can keep it as Anonymous Function Component when using a default export on the Function Component:
+```js
+import React from 'react';
+
+import Headline from './Headline.js';
+
+export default () => {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline value={greeting} />;
+};
+```
+
+However, when doing it this way, React Dev Tools cannot identify the component because it has no display name. You may see an Unknown Component in your browser's developer tools.
+
+### REACT FUNCTION COMPONENT: REF
+
+A React Ref should only be used in rare cases such as accessing/manipulating the DOM manually (e.g. focus element), animations, and integrating third-party DOM libraries (e.g. D3). If you have to use a Ref in a Function Component, you can define it within the component. In the following case, the input field will get focused after the component did mount:
+
+```js
+import React, { useState, useEffect, useRef } from 'react';
+
+const App = () => {
+  const [greeting, setGreeting] = useState('Hello React!');
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  return (
+    <div>
+      <h1>{greeting}</h1>
+
+      <Input value={greeting} handleChange={handleChange} />
+    </div>
+  );
+};
+
+const Input = ({ value, handleChange }) => {
+  const ref = useRef();
+
+  useEffect(() => ref.current.focus(), []);
+
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={handleChange}
+      ref={ref}
+    />
+  );
+};
+
+export default App;
+```
+
+However, React Function Components cannot be given refs! If you try the following, the ref will be assigned to the component instance but not to the actual DOM node.
+
+```js
+// Doesn't work!
+
+import React, { useState, useEffect, useRef } from 'react';
+
+const App = () => {
+  const [greeting, setGreeting] = useState('Hello React!');
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  const ref = useRef();
+
+  useEffect(() => ref.current.focus(), []);
+
+  return (
+    <div>
+      <h1>{greeting}</h1>
+
+      <Input value={greeting} handleChange={handleChange} ref={ref} />
+    </div>
+  );
+};
+
+const Input = ({ value, handleChange, ref }) => (
+  <input
+    type="text"
+    value={value}
+    onChange={handleChange}
+    ref={ref}
+  />
+);
+
+export default App;
+```
+It's not recommended to pass a ref from a Parent Component to a Child Component and that's why the assumption has always been: React Function Components cannot have refs. However, if you need to pass a ref to a Function Component -- because you have to measure the size of a function component's DOM node, for example, or like in this case to focus an input field from the outside -- you can forward the ref:
+```js
+// Does work!
+
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  forwardRef,
+} from 'react';
+
+const App = () => {
+  const [greeting, setGreeting] = useState('Hello React!');
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  const ref = useRef();
+
+  useEffect(() => ref.current.focus(), []);
+
+  return (
+    <div>
+      <h1>{greeting}</h1>
+
+      <Input value={greeting} handleChange={handleChange} ref={ref} />
+    </div>
+  );
+};
+
+const Input = forwardRef(({ value, handleChange }, ref) => (
+  <input
+    type="text"
+    value={value}
+    onChange={handleChange}
+    ref={ref}
+  />
+));
+
+export default App;
+```
+
+There are a few other things you may want to know about React Refs, so check out this article: How to use Ref in React or the official React documentation.
+
+### REACT FUNCTION COMPONENT: PROPTYPES
+PropTypes can be used for React Class Components and Function Components the same way. Once you have defined your component, you can assign it PropTypes to validate the incoming props of a component:
+
+```js
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const App = () => {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline value={greeting} />;
+};
+
+const Headline = ({ value }) => {
+  return <h1>{value}</h1>;
+};
+
+Headline.propTypes = {
+  value: PropTypes.string.isRequired,
+};
+
+export default App;
+```
+Note that you have to install the standalone React prop-types, because it has been removed from the React core library a while ago. If you want to learn more about PropTypes in React, check out the official documentation.
+
+In addition, previously you have seen the usage of default props for a Function Component. For the sake of completeness, this is another one:
+```js
+import React from 'react';
+
+const App = () => {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline headline={greeting} />;
+};
+
+const Headline = ({ headline }) => {
+  return <h1>{headline}</h1>;
+};
+
+Headline.defaultProps = {
+  headline: 'Hello Component',
+};
+
+export default App;
+```
+Note that you can also use the default assignment when destructuring the value from the props in the function signature (e.g. const Headline = ({ headline = 'Hello Component' }) =>) or the || operator within the Function Component's body (e.g. return <h1>{headline || 'Hello Component'}</h1>;).
+
+However, if you really want to go all-in with strongly typed components in React, you have to check out TypeScript which is briefly shown in the next section.
+
+### REACT FUNCTION COMPONENT VS CLASS COMPONENT
+This section will not present you any performance benchmark for Class Components vs Functional Components, but a few words from my side about where React may go in the future.
+
+Since React Hooks have been introduced in React, Function Components are not anymore behind Class Components feature-wise. You can have state, side-effects and lifecycle methods in React Function Components now. That's why I strongly believe React will move more towards Functional Components, because they are more lightweight than Class Components and offer a sophisticated API for reusable yet encapsulated logic with React Hooks.
+
+For the sake of comparison, check out the implementation of the following Class Component vs Functional Component:
+
+```js
+// Class Component
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: localStorage.getItem('myValueInLocalStorage') || '',
+    };
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('myValueInLocalStorage', this.state.value);
+  }
+
+  onChange = event => {
+    this.setState({ value: event.target.value });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Hello React ES6 Class Component!</h1>
+
+        <input
+          value={this.state.value}
+          type="text"
+          onChange={this.onChange}
+        />
+
+        <p>{this.state.value}</p>
+      </div>
+    );
+  }
+}
+
+// Function Component
+
+const App = () => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem('myValueInLocalStorage') || '',
+  );
+
+  React.useEffect(() => {
+    localStorage.setItem('myValueInLocalStorage', value);
+  }, [value]);
+
+  const onChange = event => setValue(event.target.value);
+
+  return (
+    <div>
+      <h1>Hello React Function Component!</h1>
+
+      <input value={value} type="text" onChange={onChange} />
+
+      <p>{value}</p>
+    </div>
+  );
+};
+```
+If you are interested in moving from Class Components to Function Components, check out this guide: A migration path from React Class Components to Function Components with React Hooks. However, there is no need to panic because you don't have to migrate all your React components now. Maybe it's a better idea to start implementing your future components as Function Components instead.
+
+The article has shown you almost everything you need to know to get started with React Function Components. If you want to dig deeper into testing React Components for instance, check out this in-depth guide: Testing React Components. Anyway, I hope there have been a couple of best practices for using Functional Components in React as well. Let me know if anything is missing!
 
 
 
