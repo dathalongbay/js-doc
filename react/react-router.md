@@ -72,6 +72,10 @@ import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 ```
 
+Chúng ta se bao bọc nội dung của mình trước với thẻ **`<BrowserRouter> ... </BrowserRouter>`**
+
+Sau đó chúng ta đưa tiếp thẻ **`<Routes>...</Routes>`** vào bên trong thẻ **`<BrowserRouter><Routes>...</Routes></BrowserRouter>`**
+
 
 
   
