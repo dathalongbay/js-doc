@@ -25,6 +25,8 @@ src\pages\:
 - Blogs.js
 - Contact.js
 - NoPage.js
+
+
 Mỗi tệp sẽ chứa một thành phần React rất cơ bản.
 
   
