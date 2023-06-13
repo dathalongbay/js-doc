@@ -50,7 +50,22 @@ Ví dụ, bạn có thể có một thành phần Header, một thành phần Si
 Tổ chức các thành phần theo cách này giúp tạo ra một cây thành phần phức tạp, trong đó mỗi thành phần có trách nhiệm duy nhất và có thể được quản lý một cách riêng biệt.
 
 ### REACT FUNCTION COMPONENT: PROPS
+Hãy tìm hiểu về một React Function Component với props. Trong React, props được sử dụng để truyền thông tin từ thành phần này sang thành phần khác. Cơ bản, props trong React luôn được truyền xuống cây thành phần:
+```js
+import React from 'react';
 
+function App() {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline value={greeting} />;
+}
+
+function Headline(props) {
+  return <h1>{props.value}</h1>;
+}
+
+export default App;
+```
 
 
 
