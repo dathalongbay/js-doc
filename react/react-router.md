@@ -76,6 +76,20 @@ Chúng ta sẽ bao bọc nội dung của mình trước với thẻ **`<Browser
 
 Sau đó chúng ta đưa tiếp thẻ **`<Routes>...</Routes>`** vào bên trong thẻ **`<BrowserRouter><Routes>...</Routes></BrowserRouter>`**
 
+Dưới đây là ý nghĩa của các đoạn mã trong tập hợp trên:
+
+<Route path="/" element={<Layout />} />: Đây là đường dẫn gốc của ứng dụng, được định nghĩa là <Layout />. Nghĩa là khi bạn truy cập vào đường dẫn gốc (/), <Layout /> sẽ được hiển thị.
+
+<Route index element={<Home />} />: Đây là một con đường dẫn con của "/", được định nghĩa là <Home />. Nghĩa là khi bạn truy cập vào đường dẫn gốc (/), <Home /> sẽ được hiển thị.
+
+<Route path="blogs" element={<Blogs />} />: Đây là một con đường dẫn tương đối, nghĩa là khi bạn truy cập vào đường dẫn /blogs, <Blogs /> sẽ được hiển thị.
+
+<Route path="contact" element={<Contact />} />: Đây là một con đường dẫn tương đối, nghĩa là khi bạn truy cập vào đường dẫn /contact, <Contact /> sẽ được hiển thị.
+
+<Route path="*" element={<NoPage />} />: Đây là một con đường dẫn tương đối với "*" đại diện cho bất kỳ đường dẫn nào không khớp với các đường dẫn trước đó. Nghĩa là khi bạn truy cập vào một đường dẫn không khớp với các đường dẫn trên, <NoPage /> sẽ được hiển thị.
+
+Với cấu trúc định tuyến trên, khi bạn truy cập vào các đường dẫn khác nhau, các thành phần tương ứng (<Home />, <Blogs />, <Contact />, <NoPage />) sẽ được hiển thị trong thành phần <Layout />.
+
 
 
 
