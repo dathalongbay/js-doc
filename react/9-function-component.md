@@ -686,6 +686,64 @@ export default App;
 
 Trong trường hợp này, mỗi khi bạn nhập gì đó vào trường nhập liệu, thành phần App cập nhật trạng thái của nó, rerender và cũng rerender thành phần Count. React memo - một trong những API cấp cao của React - có thể được sử dụng cho các React Function Component để ngăn chặn việc rerender khi các props đầu vào của thành phần này không thay đổi:
 
+```js
+import React, { useState, memo } from 'react';
+
+const App = () => {
+  const [greeting, setGreeting] = useState('Hello React!');
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () =>
+    setCount(currentCount => currentCount + 1);
+
+  const handleDecrement = () =>
+    setCount(currentCount => currentCount - 1);
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  return (
+    <div>
+      <input type="text" onChange={handleChange} />
+
+      <Count count={count} />
+
+      <button type="button" onClick={handleIncrement}>
+        Increment
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+const Count = memo(({ count }) => {
+  console.log('Does it (re)render?');
+
+  return <h1>{count}</h1>;
+});
+
+export default App;
+```
+Bây giờ, thành phần Count không còn được cập nhật khi người dùng gõ vào trường nhập liệu. Chỉ có thành phần App được rerender. Tuy nhiên, tối ưu hóa hiệu suất này không nên được sử dụng mặc định. Tôi khuyến nghị kiểm tra nó khi bạn gặp vấn đề về việc rerender các thành phần mất quá nhiều thời gian (ví dụ: render và cập nhật một danh sách lớn các mục trong một component Bảng).
+### REACT FUNCTION COMPONENT: EXPORT AND IMPORT
+Eventually you will separate components into their own files. Since React Components are functions (or classes), you can use the standard import and export statements provided by JavaScript. For instance, you can define and export a component in one file:
+
+```js
+// src/components/Headline.js
+
+import React from 'react';
+
+const Headline = (props) => {
+  return <h1>{props.value}</h1>;
+};
+
+export default Headline;
+```
+
+
+
+
 
 
 
