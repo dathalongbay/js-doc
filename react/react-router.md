@@ -118,6 +118,11 @@ const Layout = () => {
 
 export default Layout;
 ```
+Đoạn mã **`import { Outlet, Link } from "react-router-dom";`** là cách để nhập các thành phần Outlet và Link từ thư viện **react-router-dom** vào trong tệp tin của bạn.
+
+**Outlet** là một thành phần trong react-router-dom được sử dụng trong cấu trúc định tuyến. Nó được đặt trong một thành phần cha và chịu trách nhiệm hiển thị thành phần con tương ứng với địa chỉ URL. Khi bạn định nghĩa các tuyến con như trong ví dụ trước đó, Outlet sẽ hiển thị các thành phần tương ứng với địa chỉ URL trong thành phần cha.
+
+**Link** là một thành phần trong react-router-dom được sử dụng để tạo liên kết trong ứng dụng đơn trang (single-page application). Thay vì tải lại trang, Link cho phép bạn chuyển đổi giữa các địa chỉ URL mà không làm tải lại trang hoặc làm mất trạng thái của ứng dụng. Bằng cách sử dụng Link, bạn có thể tạo các liên kết trong ứng dụng của bạn để điều hướng giữa các trang hoặc các địa chỉ URL khác nhau.
 
 
 
