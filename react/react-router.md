@@ -63,6 +63,14 @@ root.render(<App />);
 ```js
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 ```
+Tiếp theo chúng ta import layout và các page chúng ta đã tạo nhé . 
+```js
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+```
 
 
 
