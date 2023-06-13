@@ -2,7 +2,9 @@
 Create React App không bao gồm định tuyến trang router.
 Do đó chúng ta phải tự cài thêm :
 ### cài đặt react router
-`npm i -D react-router-dom`    
+`npm i -D react-router-dom`   
+
+
 i là option viết tắt của install   
 -D là một cờ ngắn gọn cho --save-dev. Điều này cho biết cho npm biết rằng bạn muốn cài đặt gói react-router-dom là một phần của devDependencies (development dependencies) trong dự án của bạn. 
 Đây là nội dung sau khi cài trong file package.json  
