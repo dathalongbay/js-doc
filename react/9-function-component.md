@@ -67,7 +67,27 @@ function Headline(props) {
 export default App;
 ```
 
+Props là các tham số của React Function Component. Trong khi thành phần có thể giữ nguyên tính chất chung, chúng ta quyết định từ bên ngoài nó sẽ hiển thị như thế nào (hoặc hoạt động như thế nào). Khi hiển thị một thành phần (ví dụ: Headline trong thành phần App), bạn có thể truyền props như các thuộc tính HTML cho thành phần đó. Sau đó, trong Function Component, đối tượng props sẽ có sẵn như một đối số trong chữ ký hàm.
 
+Vì props luôn được truyền dưới dạng đối tượng và hầu hết thời gian bạn cần trích xuất thông tin từ props, việc giải cấu trúc đối tượng trong JavaScript rất hữu ích. Bạn có thể sử dụng trực tiếp nó trong chữ ký hàm cho đối tượng props:
+```js
+import React from 'react';
+
+function App() {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline value={greeting} />;
+}
+
+function Headline({ value }) {
+  return <h1>{value}</h1>;
+}
+
+export default App;
+```
+Chú ý: Nếu bạn quên việc giải cấu trúc JavaScript và chỉ truy cập props từ chữ ký hàm của thành phần như function Headline(value1, value2) { ... }, bạn có thể nhìn thấy thông báo lỗi "props undefined". Cách này không hoạt động vì props luôn có thể truy cập qua đối số đầu tiên của hàm và có thể được giải cấu trúc từ đó: function Headline({ value1, value2 }) { ... }.
+
+Nếu bạn muốn tìm hiểu thêm các mẹo và thủ thuật về props trong React, hãy kiểm tra lại bài viết liên kết ở đầu phần này. Ở đó, bạn sẽ tìm hiểu về các trường hợp mà bạn không muốn giải cấu trúc props và chỉ đơn giản chuyển chúng đến thành phần con tiếp theo với cú pháp `...` được gọi là toán tử spread.
 
 
 
