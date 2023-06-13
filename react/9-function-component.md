@@ -49,6 +49,9 @@ Ví dụ, bạn có thể có một thành phần Header, một thành phần Si
 
 Tổ chức các thành phần theo cách này giúp tạo ra một cây thành phần phức tạp, trong đó mỗi thành phần có trách nhiệm duy nhất và có thể được quản lý một cách riêng biệt.
 
+### REACT FUNCTION COMPONENT: PROPS
+
+
 
 
 
