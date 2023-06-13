@@ -132,7 +132,116 @@ Chú ý: Nếu bạn gặp phải lỗi "React Component Arrow Function Unexpect
 
 Mọi thành phần mà chúng ta đã thấy cho đến nay có thể được gọi là Stateless Function Component. Chúng chỉ nhận đầu vào dưới dạng props và trả về đầu ra dưới dạng JSX: (props) => JSX. Đầu vào, chỉ khi có sẵn dưới dạng props, xác định đầu ra được hiển thị. Loại thành phần này không quản lý trạng thái và không có bất kỳ hiệu ứng phụ nào (ví dụ: truy cập vào bộ nhớ cục bộ của trình duyệt). Mọi người gọi chúng là Functional Stateless Components, vì chúng không có trạng thái và được biểu diễn bằng một hàm. Tuy nhiên, React Hooks đã làm cho việc có trạng thái trong Function Components trở thành điều có thể.
 
+### REACT FUNCTION COMPONENT: STATE
 
+React Hooks đã cho phép sử dụng trạng thái (và hiệu ứng phụ) trong Function Components. Cuối cùng chúng ta có thể tạo một React Function Component với trạng thái! Hãy nói rằng chúng ta đã chuyển toàn bộ logic sang Function Component khác của chúng ta và không truyền bất kỳ props nào cho nó:
+
+```js
+import React from 'react';
+
+const App = () => {
+  return <Headline />;
+};
+
+const Headline = () => {
+  const greeting = 'Hello Function Component!';
+
+  return <h1>{greeting}</h1>;
+};
+
+export default App;
+```
+Cho đến nay, người dùng của ứng dụng này không có cách nào tương tác với ứng dụng và do đó không có cách nào thay đổi biến greeting. Ứng dụng là tĩnh và không tương tác. Trạng thái là điều làm cho các thành phần React trở nên tương tác và cũng làm cho chúng thú vị. React Hook giúp chúng ta thực hiện điều đó:
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  return <Headline />;
+};
+
+const Headline = () => {
+  const [greeting, setGreeting] = useState(
+    'Hello Function Component!'
+  );
+
+  return <h1>{greeting}</h1>;
+};
+
+export default App;
+```
+Hook useState nhận một trạng thái ban đầu làm tham số và trả về một mảng chứa trạng thái hiện tại như phần tử đầu tiên và một hàm để thay đổi trạng thái như phần tử thứ hai. Chúng tôi sử dụng giải cấu trúc mảng JavaScript để truy cập cả hai phần tử bằng một biểu thức ngắn gọn. Ngoài ra, giải cấu trúc cho phép chúng tôi tự đặt tên biến.
+
+Hãy thêm một trường nhập (input field) để thay đổi trạng thái với hàm setGreeting():
+
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  return <Headline />;
+};
+
+const Headline = () => {
+  const [greeting, setGreeting] = useState(
+    'Hello Function Component!'
+  );
+
+  return (
+    <div>
+      <h1>{greeting}</h1>
+
+      <input
+        type="text"
+        value={greeting}
+        onChange={event => setGreeting(event.target.value)}
+      />
+    </div>
+  );
+};
+
+export default App;
+```
+
+Bằng cách cung cấp một trình xử lý sự kiện cho trường nhập (input field), chúng ta có thể thực hiện một hành động với một hàm gọi lại khi trường nhập thay đổi giá trị của nó. Như đối số của hàm gọi lại, chúng ta nhận được một sự kiện React tổng hợp (synthetic React event) giữ giá trị hiện tại của trường nhập. Giá trị này cuối cùng được sử dụng để thiết lập trạng thái mới cho Function Component bằng một hàm mũi tên trong dòng. Chúng ta sẽ thấy sau này làm cách nào để trích xuất hàm này từ đó.
+
+Chú ý: Trường nhập (input field) cũng nhận giá trị của trạng thái của thành phần, bởi vì bạn muốn kiểm soát trạng thái (giá trị) của trường nhập và không để trạng thái nội bộ của phần tử HTML thay thế. Theo cách này, thành phần đã trở thành một thành phần kiểm soát (controlled component).
+
+Như bạn đã thấy, React Hooks cho phép chúng ta sử dụng trạng thái trong React (Arrow) Function Components. Trong khi bạn đã sử dụng phương thức setState để viết trạng thái trong một Class Component, bạn có thể sử dụng hook useState để viết trạng thái trong một Function Component.
+
+Chú ý: Nếu bạn muốn sử dụng Context của React trong Function Components, hãy xem Context Hook của React được gọi là useContext để đọc từ Context của React trong một thành phần.
+
+### REACT FUNCTION COMPONENT: EVENT HANDLER
+
+Trong ví dụ trước, bạn đã sử dụng trình xử lý sự kiện onChange cho trường nhập. Điều này là phù hợp, vì bạn muốn được thông báo mỗi khi giá trị nội bộ của trường nhập thay đổi. Trong trường hợp của các phần tử biểu mẫu HTML khác, bạn có một số trình xử lý sự kiện React khác nhau mà bạn có thể sử dụng như onClick, onMouseDown và onBlur.
+
+Chú ý: Trình xử lý sự kiện onChange chỉ là một trong số các trình xử lý cho các phần tử biểu mẫu HTML. Ví dụ, một nút bấm sẽ cung cấp một trình xử lý sự kiện onClick để phản ứng với sự kiện nhấp chuột.
+
+Cho đến nay, chúng ta đã sử dụng một hàm mũi tên để nhúng trình xử lý sự kiện cho trường nhập. Vậy làm thế nào để trích xuất nó thành một hàm đứng riêng trong thành phần? Nó sẽ trở thành một hàm có tên trong trường hợp đó:
+
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  return <Headline />;
+};
+
+const Headline = () => {
+  const [greeting, setGreeting] = useState(
+    'Hello Function Component!'
+  );
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  return (
+    <div>
+      <h1>{greeting}</h1>
+
+      <input type="text" value={greeting} onChange={handleChange} />
+    </div>
+  );
+};
+
+export default App;
+```
 
 
 
