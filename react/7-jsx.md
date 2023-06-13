@@ -1,5 +1,12 @@
-# JSX
-JSX (JavaScript XML): JSX là một phần cú pháp của React cho phép bạn viết các đoạn mã JavaScript trong HTML. JSX giúp tạo ra các thành phần UI trong React một cách rõ ràng và dễ đọc hơn.   
+# JSX   
+
+What is JSX?
+JSX là viết tắt của JavaScript XML.
+
+JSX cho phép chúng ta viết html trong react.
+
+JSX tạo ra 1 cách dễ dàng hơn để viết và thêm html trong react.
+
 Sau đây là các ví dụ về JSX 
 ### Ví dụ cơ bản:
 ```js
