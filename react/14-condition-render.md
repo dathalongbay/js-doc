@@ -19,3 +19,8 @@ function MadeGoal() {
   return <h1>Goal!</h1>;
 }
 ```
+
+Example:
+Now, we'll create another component that chooses which component to render based on a condition:
+
+
