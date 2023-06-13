@@ -90,6 +90,35 @@ Dưới đây là ý nghĩa của các đoạn mã trong tập hợp trên:
 
 Với cấu trúc định tuyến trên, khi bạn truy cập vào các đường dẫn khác nhau, các thành phần tương ứng **`(<Home />, <Blogs />, <Contact />, <NoPage />)`** sẽ được hiển thị trong thành phần **`<Layout />`**
 
+Đây là nội dung của file **`Layout.js`**
+```js
+import { Outlet, Link } from "react-router-dom";
+
+const Layout = () => {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/blogs">Blogs</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Outlet />
+    </>
+  )
+};
+
+export default Layout;
+```
+
 
 
 
