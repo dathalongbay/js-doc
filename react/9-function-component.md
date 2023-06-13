@@ -595,6 +595,97 @@ const App = () => {
 export default App;
 ```
 
+Bây giờ mỗi khi Function Component được render lại, số lượng được lưu trữ trong bộ nhớ cục bộ của trình duyệt. Mỗi khi bạn làm mới trang trình duyệt, số lượng từ bộ nhớ cục bộ của trình duyệt, trong trường hợp có số lượng trong bộ nhớ, được đặt làm trạng thái ban đầu.
+
+Bạn cũng có thể chỉ định khi nào Effect Hook nên chạy dựa trên các biến bạn truyền vào mảng như là đối số thứ hai. Khi một trong số các biến thay đổi, Effect Hook sẽ chạy. Trong trường hợp này, việc lưu trữ số lượng chỉ có ý nghĩa nếu số lượng đã thay đổi:
+
+```js 
+import React, { useState, useEffect } from 'react';
+
+const App = () => {
+  const initialCount = +localStorage.getItem('storageCount') || 0;
+  const [count, setCount] = useState(initialCount);
+
+  const handleIncrement = () =>
+    setCount(currentCount => currentCount + 1);
+
+  const handleDecrement = () =>
+    setCount(currentCount => currentCount - 1);
+
+  useEffect(() => localStorage.setItem('storageCount', count), [
+    count,
+  ]);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+
+      <button type="button" onClick={handleIncrement}>
+        Increment
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+export default App;
+```
+Bằng cách sử dụng đối số thứ hai của Effect Hook một cách cẩn thận, bạn có thể quyết định liệu nó sẽ chạy:
+
+- Mỗi lần (không có đối số)
+- Chỉ khi mount và unmount (đối số là một mảng rỗng [])
+- Chỉ khi một biến cụ thể thay đổi (ví dụ: đối số là [count])
+
+Lưu ý: Việc cập nhật bằng force update trong React Function Component có thể được thực hiện bằng cách sử dụng mẹo hay này. Tuy nhiên, bạn nên cẩn thận khi áp dụng mẫu này, vì có thể bạn có thể giải quyết vấn đề theo cách khác.
+
+### PURE REACT FUNCTION COMPONENT
+
+React Class Components cung cấp khả năng quyết định xem một component có cần rerender hay không. Điều này được thực hiện bằng cách sử dụng PureComponent hoặc shouldComponentUpdate để tránh các vấn đề về hiệu suất trong React bằng cách ngăn chặn việc rerender. Hãy xem ví dụ mở rộng sau đây:
+
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  const [greeting, setGreeting] = useState('Hello React!');
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () =>
+    setCount(currentCount => currentCount + 1);
+
+  const handleDecrement = () =>
+    setCount(currentCount => currentCount - 1);
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  return (
+    <div>
+      <input type="text" onChange={handleChange} />
+
+      <Count count={count} />
+
+      <button type="button" onClick={handleIncrement}>
+        Increment
+      </button>
+      <button type="button" onClick={handleDecrement}>
+        Decrement
+      </button>
+    </div>
+  );
+};
+
+const Count = ({ count }) => {
+  console.log('Does it (re)render?');
+
+  return <h1>{count}</h1>;
+};
+
+export default App;
+```
+
+Trong trường hợp này, mỗi khi bạn nhập gì đó vào trường nhập liệu, thành phần App cập nhật trạng thái của nó, rerender và cũng rerender thành phần Count. React memo - một trong những API cấp cao của React - có thể được sử dụng cho các React Function Component để ngăn chặn việc rerender khi các props đầu vào của thành phần này không thay đổi:
+
 
 
 
