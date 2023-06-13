@@ -59,5 +59,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 
+Đầu tiên chúng ta cần import các thành phần cơ bản của react router bằng lệnh 
+```js
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+```
+
+
 
   
