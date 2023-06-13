@@ -22,4 +22,13 @@ Chúng ta cùng xem qua cấu trúc ứng dụng :
     -->
   </body>
 ```
-- 
+- folder src : chứa source code mà chúng ta sẽ viết trong ứng dụng react này 
+- .gitignore <nếu có> : file này khai báo các folder và file mà chúng ta không muốn git theo dõi
+- package.json : khai báo tên các thư viên sẽ được cài đặt và npm script có thể được chạy khi gõ câu lệnh. hãy tự mở file này lên và quan sát
+- package-lock.json 
+Package-lock.json có các tác dụng sau:
+
+1. Đảm bảo sự nhất quán về phiên bản: Khi tạo ra tệp package-lock.json, npm ghi lại các phiên bản cụ thể của các gói phụ thuộc mà dự án của bạn đang sử dụng. Điều này đảm bảo rằng tất cả thành viên trong nhóm phát triển sẽ cài đặt cùng các phiên bản này và đảm bảo sự nhất quán giữa các môi trường phát triển khác nhau.
+
+2. Tăng tốc quá trình cài đặt: Khi bạn hoặc ai đó khác tải dự án của bạn về và chạy lệnh npm install, npm sẽ sử dụng tệp package-lock.json để cài đặt các phiên bản cụ thể của các gói phụ thuộc mà không cần phải kiểm tra phiên bản mới nhất. Điều này giúp tăng tốc quá trình cài đặt và đảm bảo rằng các phiên bản cụ thể được cài đặt một cách nhất quán trên các máy tính khác nhau.
+- Readme.md : file viết thông tin hướng dẫn sử dụng của 1 project 
