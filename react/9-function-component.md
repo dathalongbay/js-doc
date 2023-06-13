@@ -242,6 +242,77 @@ const Headline = () => {
 
 export default App;
 ```
+Chúng ta đã sử dụng một hàm mũi tên để định nghĩa hàm trong thành phần. Nếu bạn đã sử dụng các phương thức lớp trong React Class Components trước đây, cách định nghĩa hàm trong một React Function Component tương đương. Bạn có thể gọi nó là "React Function Component Methods" - tương đương với class components. Bạn có thể tạo hoặc thêm bao nhiêu hàm muốn trong Functional Component để làm trình xử lý sự kiện rõ ràng hoặc đóng gói logic nghiệp vụ khác.\
+
+### REACT FUNCTION COMPONENT: CALLBACK FUNCTION
+
+Mọi thứ xảy ra trong Child Function Component của chúng ta. Không có props được chuyển cho nó, mặc dù bạn đã thấy trước đó làm thế nào một biến chuỗi cho lời chào có thể được truyền từ Parent Component cho Child Component. Liệu có thể truyền một hàm cho một component dưới dạng prop không? Có cách nào để gọi một hàm của component từ bên ngoài! Hãy xem cách làm việc này:
+
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  const [greeting, setGreeting] = useState(
+    'Hello Function Component!'
+  );
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  return (
+    <Headline headline={greeting} onChangeHeadline={handleChange} />
+  );
+};
+
+const Headline = ({ headline, onChangeHeadline }) => (
+  <div>
+    <h1>{headline}</h1>
+
+    <input type="text" value={headline} onChange={onChangeHeadline} />
+  </div>
+);
+
+export default App;
+```
+Đó là tất cả. Bạn có thể truyền một hàm cho một Child Component và xử lý những gì xảy ra trong Parent Component. Bạn cũng có thể thực hiện một số thứ trong Child Component (Headline component) cho hàm onChangeHeadline - như cắt bỏ khoảng trắng của giá trị - để thêm chức năng bổ sung bên trong Child Component. Đó là cách bạn có thể gọi một hàm của Child Component từ một Parent Component.
+
+Hãy đưa ví dụ này một bước xa hơn bằng cách giới thiệu một Sibling Component cho component Headline. Đó có thể là một component Input trừu tượng:
+
+```js
+import React, { useState } from 'react';
+
+const App = () => {
+  const [greeting, setGreeting] = useState(
+    'Hello Function Component!'
+  );
+
+  const handleChange = event => setGreeting(event.target.value);
+
+  return (
+    <div>
+      <Headline headline={greeting} />
+
+      <Input value={greeting} onChangeInput={handleChange}>
+        Set Greeting:
+      </Input>
+    </div>
+  );
+};
+
+const Headline = ({ headline }) => <h1>{headline}</h1>;
+
+const Input = ({ value, onChangeInput, children }) => (
+  <label>
+    {children}
+    <input type="text" value={value} onChange={onChangeInput} />
+  </label>
+);
+
+export default App;
+```
+Tôi nghĩ đây là một ví dụ hoàn hảo nhưng tối giản để minh họa cách truyền hàm giữa các component dưới dạng props; và quan trọng hơn là cách chia sẻ một hàm giữa các component. Bạn có một Parent Component quản lý logic và hai Child Components - là các sibling - nhận props. Những props này luôn có thể bao gồm một hàm gọi lại để gọi một hàm trong một component khác. Đó là cách cơ bản để gọi một hàm trong các component khác nhau trong React.
+
+### Override Component Function with React
+
 
 
 
