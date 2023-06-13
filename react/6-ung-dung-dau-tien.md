@@ -48,3 +48,4 @@ function App() {
 
 export default App;
 ```
+Hãy thử sửa nội dung trong lệnh return của component App nói trên và quan sát ngoài màn hình để thấy sự thay đổi .
