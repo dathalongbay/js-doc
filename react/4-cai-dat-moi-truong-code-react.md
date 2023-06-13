@@ -53,6 +53,11 @@ tiếp nữa gõ lệnh
 ```
 npm start
 ```
+
+Mặc định ứng dụng sẽ chạy trên port 3000. nếu có 1 ứng dụng khác đã chạy trên port 3000 . Trong terminal sẽ hỏi xác nhận bạn có muốn chạy trên 1 port khác không ? hãy gõ y để xác nhận .
+
+Đây là giao diện khi ứng dụng đã chạy . Trong bài sau chúng ta sẽ vọc vạch code trong ứng dụng này .
+
 ![image](https://github.com/dathalongbay/js-doc/assets/6966136/92749619-0018-4a31-a843-9d48946ca844)
 
 
