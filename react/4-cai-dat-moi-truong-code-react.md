@@ -53,6 +53,8 @@ tiếp nữa gõ lệnh
 ```
 npm start
 ```
+![image](https://github.com/dathalongbay/js-doc/assets/6966136/92749619-0018-4a31-a843-9d48946ca844)
+
 
 
 
