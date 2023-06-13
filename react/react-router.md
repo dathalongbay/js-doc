@@ -11,5 +11,18 @@ i là option viết tắt của install
     "react-router-dom": "^6.11.2"
   }
 ```
+### Cấu trúc thư mục
+Để tạo một ứng dụng có nhiều định tuyến trang, trước tiên hãy bắt đầu với cấu trúc tệp.
+
+Trong srcthư mục, chúng tôi sẽ tạo một thư mục có tên pagesvới một số tệp:
+
+src\pages\:
+
+- Layout.js
+- Home.js
+- Blogs.js
+- Contact.js
+- NoPage.js
+Mỗi tệp sẽ chứa một thành phần React rất cơ bản.
 
   
