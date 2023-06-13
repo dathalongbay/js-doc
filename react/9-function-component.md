@@ -89,6 +89,50 @@ Chú ý: Nếu bạn quên việc giải cấu trúc JavaScript và chỉ truy c
 
 Nếu bạn muốn tìm hiểu thêm các mẹo và thủ thuật về props trong React, hãy kiểm tra lại bài viết liên kết ở đầu phần này. Ở đó, bạn sẽ tìm hiểu về các trường hợp mà bạn không muốn giải cấu trúc props và chỉ đơn giản chuyển chúng đến thành phần con tiếp theo với cú pháp `...` được gọi là toán tử spread.
 
+### REACT ARROW FUNCTION COMPONENT
+
+Với sự ra đời của JavaScript ES6, các khái niệm lập trình mới đã được giới thiệu vào JavaScript và do đó vào React. Ví dụ, một hàm JavaScript có thể được biểu diễn dưới dạng lambda (arrow function). Đó là lý do tại sao một Function Component đôi khi được gọi là Arrow Function Components (hoặc có thể còn gọi là Lambda Function Component). Hãy xem thành phần React đã được tái cấu trúc của chúng ta sử dụng Arrow Function:
+
+```js
+import React from 'react';
+
+const App = () => {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline value={greeting} />;
+};
+
+const Headline = ({ value }) => {
+  return <h1>{value}</h1>;
+};
+
+export default App;
+```
+
+Cả hai React Arrow Function Components trên  đều sử dụng một thân hàm trong khối hiện tại. Tuy nhiên, thành phần thứ hai có thể được viết gọn hơn với một thân hàm ngắn gọn, vì nó chỉ trả về đầu ra của thành phần mà không làm gì khác giữa quá trình. Khi loại bỏ dấu ngoặc nhọn, việc trả về rõ ràng trở thành một trả về ngầm định và cũng có thể được bỏ đi:
+```js
+import React from 'react';
+
+const App = () => {
+  const greeting = 'Hello Function Component!';
+
+  return <Headline value={greeting} />;
+};
+
+const Headline = ({ value }) =>
+  <h1>{value}</h1>;
+
+export default App;
+```
+Khi sử dụng hàm mũi tên (arrow functions) cho các thành phần React, không có gì thay đổi đối với props. Chúng vẫn có thể truy cập như các đối số như trước đây. Đây là một React Function Component với ES6 Functions được biểu diễn dưới dạng mũi tên thay vì ES5 Functions, đó là cách mặc định hơn để biểu diễn các hàm trong JavaScript.
+
+Chú ý: Nếu bạn gặp phải lỗi "React Component Arrow Function Unexpected Token", hãy đảm bảo rằng JavaScript ES6 có sẵn cho ứng dụng React của bạn. Thông thường khi sử dụng create-react-app, điều này sẽ được cung cấp. Nếu không, nếu bạn tự thiết lập dự án của mình, Babel sẽ bật các tính năng ES6 và các phiên bản mới hơn cho ứng dụng React của bạn.
+
+### REACT STATELESS FUNCTION COMPONENT
+
+Mọi thành phần mà chúng ta đã thấy cho đến nay có thể được gọi là Stateless Function Component. Chúng chỉ nhận đầu vào dưới dạng props và trả về đầu ra dưới dạng JSX: (props) => JSX. Đầu vào, chỉ khi có sẵn dưới dạng props, xác định đầu ra được hiển thị. Loại thành phần này không quản lý trạng thái và không có bất kỳ hiệu ứng phụ nào (ví dụ: truy cập vào bộ nhớ cục bộ của trình duyệt). Mọi người gọi chúng là Functional Stateless Components, vì chúng không có trạng thái và được biểu diễn bằng một hàm. Tuy nhiên, React Hooks đã làm cho việc có trạng thái trong Function Components trở thành điều có thể.
+
+
 
 
 
