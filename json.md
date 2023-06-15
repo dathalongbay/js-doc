@@ -1,4 +1,4 @@
-Hướng dẫn Sử dụng JSON trong JavaScript
+# Hướng dẫn Sử dụng JSON trong JavaScript
 
 JSON (JavaScript Object Notation) là một định dạng dữ liệu phổ biến được sử dụng để truyền dữ liệu giữa máy chủ và trình duyệt web. Nó có cú pháp đơn giản và dễ đọc, làm cho việc làm việc với dữ liệu JSON trong JavaScript trở nên dễ dàng. Trong bài viết này, chúng ta sẽ tìm hiểu cách sử dụng JSON trong JavaScript.
 
