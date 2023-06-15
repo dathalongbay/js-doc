@@ -65,3 +65,4 @@ const expensiveCalculation = (num) => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
+## Sử dụng useMemo
