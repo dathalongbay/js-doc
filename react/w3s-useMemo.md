@@ -66,3 +66,61 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 ## Sử dụng useMemo
+
+Để khắc phục vấn đề hiệu suất này, chúng ta có thể sử dụng Hook useMemo để memoize (ghi nhớ) hàm expensiveCalculation. Điều này sẽ khiến hàm chỉ chạy khi cần thiết.
+
+Chúng ta có thể bao bọc cuộc gọi hàm expensive bằng useMemo.
+
+Hook useMemo nhận một tham số thứ hai để khai báo các phụ thuộc. Hàm expensive sẽ chỉ chạy khi các phụ thuộc của nó thay đổi.
+
+Trong ví dụ sau, hàm expensive sẽ chỉ chạy khi giá trị của count thay đổi và không chạy khi có todo mới được thêm vào.
+
+### Ví dụ 
+Ví dụ về hiệu suất sử dụng Hook useMemo:
+```js
+import { useState, useMemo } from "react";
+import ReactDOM from "react-dom/client";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+  const calculation = useMemo(() => expensiveCalculation(count), [count]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const addTodo = () => {
+    setTodos((t) => [...t, "New Todo"]);
+  };
+
+  return (
+    <div>
+      <div>
+        <h2>My Todos</h2>
+        {todos.map((todo, index) => {
+          return <p key={index}>{todo}</p>;
+        })}
+        <button onClick={addTodo}>Add Todo</button>
+      </div>
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+        <h2>Expensive Calculation</h2>
+        {calculation}
+      </div>
+    </div>
+  );
+};
+
+const expensiveCalculation = (num) => {
+  console.log("Calculating...");
+  for (let i = 0; i < 1000000000; i++) {
+    num += 1;
+  }
+  return num;
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+```
