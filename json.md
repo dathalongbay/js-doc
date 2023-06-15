@@ -49,3 +49,43 @@ console.log(jsonObj.city); // Output: New York
 Chúng ta có thể sử dụng tên thuộc tính và cú pháp `.` để truy cập vào các thuộc tính JSON.
 
 Đó là một hướng dẫn cơ bản về cách sử dụng JSON trong JavaScript. JSON rất linh hoạt và được sử dụng rộng rãi trong việc truyền dữ liệu giữa máy chủ và trình duyệt web. Bằng cách nắm vững cách sử dụng JSON, bạn có thể làm việc hiệu quả với dữ liệu trong ứng dụng web của mình.
+
+# Mảng json 
+Dưới đây là một ví dụ về một mảng JSON trong JavaScript:
+
+```javascript
+var products = [
+  {
+    "id": 1,
+    "name": "T-shirt",
+    "price": 15.99,
+    "color": "blue"
+  },
+  {
+    "id": 2,
+    "name": "Jeans",
+    "price": 29.99,
+    "color": "black"
+  },
+  {
+    "id": 3,
+    "name": "Shoes",
+    "price": 49.99,
+    "color": "red"
+  }
+];
+```
+
+Trong ví dụ trên, chúng ta đã tạo một mảng JSON có ba phần tử. Mỗi phần tử là một đối tượng JSON đại diện cho một sản phẩm khác nhau. Mỗi sản phẩm có các thuộc tính như "id", "name", "price" và "color". Mảng JSON này có thể được sử dụng để lưu trữ danh sách sản phẩm hoặc dữ liệu tương tự trong ứng dụng web của bạn.
+
+Bạn có thể truy cập vào các phần tử trong mảng JSON như sau:
+
+```javascript
+console.log(products[0]); // Output: { "id": 1, "name": "T-shirt", "price": 15.99, "color": "blue" }
+console.log(products[1].name); // Output: "Jeans"
+console.log(products[2].price); // Output: 49.99
+```
+
+Chúng ta sử dụng chỉ số của mảng để truy cập vào các phần tử trong mảng JSON. Bạn cũng có thể truy cập vào các thuộc tính của từng phần tử bằng cách sử dụng cú pháp `products[index].propertyName`.
+
+Với mảng JSON, bạn có thể thực hiện nhiều thao tác như lặp qua các phần tử, thêm/xóa/sửa đổi phần tử, và thực hiện các thao tác xử lý dữ liệu phức tạp hơn.
