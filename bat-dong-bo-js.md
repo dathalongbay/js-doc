@@ -1,4 +1,4 @@
-Tutorial: Đồng bộ và Bất đồng bộ trong JavaScript
+# Tutorial: Đồng bộ và Bất đồng bộ trong JavaScript
 
 Trong JavaScript, đồng bộ (synchronous) và bất đồng bộ (asynchronous) là hai cách tiếp cận để xử lý các tác vụ. Đồng bộ có nghĩa là các tác vụ được thực hiện theo thứ tự từ trên xuống dưới, trong khi bất đồng bộ cho phép các tác vụ chạy đồng thời và không chờ đợi nhau hoàn thành. Trong bài viết này, chúng ta sẽ tìm hiểu về cả hai cách tiếp cận này và cách áp dụng chúng trong JavaScript.
 
